@@ -36,6 +36,7 @@ public:
 	// members
 	void incrementGrade();
 	void decrementGrade();
+	// void signForm();// @todo implement try/catch
 
 private:
 	const std::string name;
