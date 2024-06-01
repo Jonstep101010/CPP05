@@ -11,28 +11,26 @@ Bureaucrat::Bureaucrat()
 	std::cout << "created new default bureaucrat\n";
 }
 
-Bureaucrat::Bureaucrat(int grade)
-	: name("default"), grade(grade) {
+static int _validate_grade(int grade) {
 	if (grade < GRADE_MAX) {
 		throw Bureaucrat::GradeTooHigh();
 	}
 	if (grade > GRADE_MIN) {
 		throw Bureaucrat::GradeTooLow();
 	}
+	return grade;
+}
+
+Bureaucrat::Bureaucrat(int grade)
+	: name("default"), grade(_validate_grade(grade)) {
 	std::cout << "created new bureaucrat with grade " << grade
 			  << "\n";
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade)
-	: name(name), grade(grade) {
-	if (grade < GRADE_MAX) {
-		throw Bureaucrat::GradeTooHigh();
-	}
-	if (grade > GRADE_MIN) {
-		throw Bureaucrat::GradeTooLow();
-	}
-	std::cout << "created new bureaucrat with name " << name
-			  << " of grade" << grade << "\n";
+	: name(name), grade(_validate_grade(grade)) {
+	std::cout << "created new bureaucrat with name '" << name
+			  << "' of grade " << grade << "\n";
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& src)
