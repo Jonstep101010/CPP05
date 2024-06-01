@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include <iostream>
 
 int main() {
 	Bureaucrat MEP
@@ -13,8 +14,11 @@ int main() {
 	MEP.signForm(executive_order);
 
 	// should succeed (1 <= 1)
+	std::cout << "- - - - - - - -\nBefore signing request:\n" << executive_order << "- - - - - - - -\n";
 	president.signForm(executive_order);
+	std::cout << "- - - - - - - -\nAfter signing request:\n" << executive_order  << "- - - - - - - -\n";
 
 	// instantiating a form requiring invalid grades should throw an exception
 	Form form = Form("simple", /* minimum signing level */0, 151);
+
 }
