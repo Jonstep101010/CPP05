@@ -56,14 +56,6 @@ std::ostream& operator<<(std::ostream& o, Form const& i) {
 	return o;
 }
 
-const char* Form::GradeTooLow::what() const throw() {
-	return "grade is too low";
-}
-
-const char* Form::GradeTooHigh::what() const throw() {
-	return "grade is too high";
-}
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */

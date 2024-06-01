@@ -80,14 +80,6 @@ std::ostream& operator<<(std::ostream&     o,
 	return o;
 }
 
-const char* Bureaucrat::GradeTooLow::what() const throw() {
-	return "grade is too low\n";
-}
-
-const char* Bureaucrat::GradeTooHigh::what() const throw() {
-	return "grade is too high\n";
-}
-
 /*
 ** ---------------------------------- MEMBER ----------------------------------
 */
