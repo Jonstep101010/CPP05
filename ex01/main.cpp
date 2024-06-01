@@ -14,4 +14,7 @@ int main() {
 
 	// should succeed (1 <= 1)
 	president.signForm(executive_order);
+
+	// instantiating a form requiring invalid grades should throw an exception
+	Form form = Form("simple", /* minimum signing level */0, 151);
 }
