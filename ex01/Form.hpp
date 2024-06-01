@@ -3,10 +3,13 @@
 #include "Bureaucrat.hpp"
 #include <ostream>
 
+class Bureaucrat;
+
 class Form {
 
 public:
 	Form();
+	Form(std::string const&, int, int);
 	Form(Form const& src);
 	~Form();
 
@@ -19,7 +22,16 @@ public:
 	int                getReqExecGrade() const;
 
 	// members
-	void beSigned(Bureaucrat const& signee);
+	void beSigned(Bureaucrat& signee);
+
+	class GradeTooLow : public std::exception {
+	public:
+		const char* what() const throw();
+	};
+	class GradeTooHigh : public std::exception {
+	public:
+		const char* what() const throw();
+	};
 
 private:
 	const std::string name;

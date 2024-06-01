@@ -1,10 +1,13 @@
 #pragma once
 
+#include "Form.hpp"
 #include <exception>
 #include <string>
 
 #define GRADE_MAX 1
 #define GRADE_MIN 150
+
+class Form;
 
 class Bureaucrat {
 
@@ -36,7 +39,7 @@ public:
 	// members
 	void incrementGrade();
 	void decrementGrade();
-	// void signForm();// @todo implement try/catch
+	void signForm(Form& form_to_sign);
 
 private:
 	const std::string name;

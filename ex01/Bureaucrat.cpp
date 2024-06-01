@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 /*
@@ -96,6 +97,21 @@ const char* Bureaucrat::GradeTooHigh::what() const throw() {
 void Bureaucrat::incrementGrade() { Bureaucrat::operator++(); }
 
 void Bureaucrat::decrementGrade() { Bureaucrat::operator--(); }
+
+#define RED(string) "\033[31m\033[1m" << string << "\033[0m"
+#define GREEN(string) "\033[32m" << string << "\033[0m"
+
+void Bureaucrat::signForm(Form& signrequest) {
+	try {
+		signrequest.Form::beSigned(*this);
+		std::cout << this->getName() << GREEN(" signed ")
+				  << signrequest.getName() << "\n";
+	} catch (Form::GradeTooLow& e) {
+		std::cout << this->getName() << RED(" couldn't sign ")
+				  << signrequest.getName() << " because "
+				  << e.what() << ".\n";
+	};
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
