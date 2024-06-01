@@ -7,7 +7,7 @@ project(Bureaucrat)
 set(CMAKE_CXX_STANDARD 98)
 
 # Set the C++ compiler
-set(CMAKE_CXX_COMPILER clang++-17)
+set(CMAKE_CXX_COMPILER clang++)
 
 # Add the executable target
 file(GLOB sources main.cpp *.cpp *.hpp)
