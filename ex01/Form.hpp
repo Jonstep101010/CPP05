@@ -24,13 +24,13 @@ public:
 	// members
 	void beSigned(Bureaucrat& signee);
 
-	class GradeTooLow : public std::exception {
+	class GradeTooLowException : public std::exception {
 	public:
 		const char* what() const throw() {
 			return "grade is too low";
 		}
 	};
-	class GradeTooHigh : public std::exception {
+	class GradeTooHighException : public std::exception {
 	public:
 		const char* what() const throw() {
 			return "grade is too high";

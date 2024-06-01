@@ -27,12 +27,12 @@ public:
 	const std::string& getName() const;
 
 	// exceptions
-	class GradeTooLow : public std::exception {
+	class GradeTooLowException : public std::exception {
 		const char* what() const throw() {
 			return "grade is too low\n";
 		}
 	};
-	class GradeTooHigh : public std::exception {
+	class GradeTooHighException : public std::exception {
 		const char* what() const throw() {
 			return "grade is too high\n";
 		}

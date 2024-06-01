@@ -13,10 +13,10 @@ Bureaucrat::Bureaucrat()
 
 static int _validate_grade(int grade) {
 	if (grade < GRADE_MAX) {
-		throw Bureaucrat::GradeTooHigh();
+		throw Bureaucrat::GradeTooHighException();
 	}
 	if (grade > GRADE_MIN) {
-		throw Bureaucrat::GradeTooLow();
+		throw Bureaucrat::GradeTooLowException();
 	}
 	return grade;
 }
@@ -57,7 +57,7 @@ Bureaucrat& Bureaucrat::operator++() {
 	const int new_grade = this->getGrade() - 1;
 
 	if (new_grade < GRADE_MAX) {
-		throw Bureaucrat::GradeTooHigh();
+		throw Bureaucrat::GradeTooHighException();
 	}
 	this->grade = new_grade;
 	return *this;
@@ -67,7 +67,7 @@ Bureaucrat& Bureaucrat::operator--() {
 	const int new_grade = this->getGrade() + 1;
 
 	if (new_grade > GRADE_MIN) {
-		throw Bureaucrat::GradeTooLow();
+		throw Bureaucrat::GradeTooLowException();
 	}
 	this->grade = new_grade;
 	return *this;
@@ -96,7 +96,7 @@ void Bureaucrat::signForm(Form& signrequest) {
 		signrequest.Form::beSigned(*this);
 		std::cout << this->getName() << GREEN(" signed ")
 				  << signrequest.getName() << "\n";
-	} catch (Form::GradeTooLow& e) {
+	} catch (Form::GradeTooLowException& e) {
 		std::cout << this->getName() << RED(" couldn't sign ")
 				  << signrequest.getName() << " because "
 				  << e.what() << ".\n";

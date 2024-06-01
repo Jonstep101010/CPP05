@@ -10,16 +10,17 @@ Form::Form()
 	, req_signing_grade(GRADE_MIN)
 	, req_execution_grade(0) {}
 
-Form::Form(std::string const &name, int req_signing_grade, int req_exec_grade)
+Form::Form(std::string const& name, int req_signing_grade,
+		   int req_exec_grade)
 	: name(name)
 	, is_signed(false)
 	, req_signing_grade(req_signing_grade)
 	, req_execution_grade(req_exec_grade) {
 	if (req_signing_grade > 150 || req_exec_grade > 150) {
-		throw Form::GradeTooLow();
+		throw Form::GradeTooLowException();
 	}
 	if (req_signing_grade < 1 || req_exec_grade < 1) {
-		throw Form::GradeTooHigh();
+		throw Form::GradeTooHighException();
 	}
 }
 
@@ -66,7 +67,7 @@ void Form::beSigned(Bureaucrat& signee) {
 	if (signee.getGrade() <= this->getReqSignGrade()) {
 		this->is_signed = true;
 	} else {
-		throw Form::GradeTooLow();
+		throw Form::GradeTooLowException();
 	}
 }
 
