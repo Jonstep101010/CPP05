@@ -42,6 +42,7 @@ public:
 	void incrementGrade();
 	void decrementGrade();
 	void signForm(AForm& form_to_sign);
+	void executeForm(AForm const& form);
 
 private:
 	const std::string name;

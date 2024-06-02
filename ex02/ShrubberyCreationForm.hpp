@@ -11,6 +11,7 @@ class ShrubberyCreationForm : public AForm {
 
 public:
 	ShrubberyCreationForm();
+	ShrubberyCreationForm(std::string const& target);
 	ShrubberyCreationForm(ShrubberyCreationForm const& src);
 	~ShrubberyCreationForm();
 
@@ -18,10 +19,6 @@ public:
 	operator=(ShrubberyCreationForm const& rhs);
 
 private:
+	const std::string target;
+	void              execute_action() const;
 };
-
-// std::ostream& operator<<(std::ostream&                o,
-// 						 ShrubberyCreationForm const& i);
-
-// sign 147, exec 137
-// Create a file <target>_shrubbery in the working directory, and write ASCII trees inside

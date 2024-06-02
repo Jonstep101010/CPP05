@@ -11,7 +11,7 @@ public:
 	AForm();
 	AForm(std::string const&, int, int);
 	AForm(AForm const& src);
-	~AForm();
+	virtual ~AForm();
 
 	AForm& operator=(AForm const& rhs);
 
@@ -23,6 +23,8 @@ public:
 
 	// members
 	void beSigned(Bureaucrat& signee);
+
+	void execute(Bureaucrat const& executor) const;
 
 	class GradeTooLowException : public std::exception {
 	public:
@@ -36,8 +38,15 @@ public:
 			return "grade is too high";
 		}
 	};
+	class NotSignedException : public std::exception {
+	public:
+		const char* what() const throw() {
+			return "form is not signed";
+		}
+	};
 
 private:
+	virtual void      execute_action() const = 0;
 	const std::string name;
 	bool              is_signed;
 	const int         req_signing_grade;

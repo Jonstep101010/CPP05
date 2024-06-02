@@ -7,6 +7,10 @@
 ShrubberyCreationForm::ShrubberyCreationForm() {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(
+	std::string const& target)
+	: AForm("ShrubberyCreationForm", 145, 137), target(target) {}
+
+ShrubberyCreationForm::ShrubberyCreationForm(
 	const ShrubberyCreationForm& src) {
 	(void)src;
 }
@@ -31,15 +35,16 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(
 	return *this;
 }
 
-// std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
+
+void ShrubberyCreationForm::execute_action() const {
+	// @follow-up write ascii trees to file & remove printing to stdout
+
+	std::cout << "created file " << target
+			  << "_shrubbery in working directory\n";
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

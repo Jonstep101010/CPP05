@@ -10,6 +10,7 @@ class PresidentialPardonForm : public AForm {
 
 public:
 	PresidentialPardonForm();
+	PresidentialPardonForm(std::string const& target);
 	PresidentialPardonForm(PresidentialPardonForm const& src);
 	~PresidentialPardonForm();
 
@@ -17,10 +18,6 @@ public:
 	operator=(PresidentialPardonForm const& rhs);
 
 private:
+	const std::string target;
+	void              execute_action() const;
 };
-
-// std::ostream& operator<<(std::ostream&                 o,
-// 						 PresidentialPardonForm const& i);
-
-// sign 25, exec 5
-// Informs that <target> has been pardoned by Zaphod Beeblebrox.

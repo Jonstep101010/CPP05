@@ -11,7 +11,7 @@ AForm::AForm()
 	, req_execution_grade(0) {}
 
 AForm::AForm(std::string const& name, int req_signing_grade,
-		   int req_exec_grade)
+			 int req_exec_grade)
 	: name(name)
 	, is_signed(false)
 	, req_signing_grade(req_signing_grade)
@@ -71,6 +71,18 @@ void AForm::beSigned(Bureaucrat& signee) {
 	}
 }
 
+void AForm::execute(Bureaucrat const& executor) const {
+	if (executor.getGrade() <= this->req_execution_grade) {
+		if (is_signed) {
+			execute_action();
+		} else {
+			throw AForm::NotSignedException();
+		}
+	} else {
+		throw AForm::GradeTooLowException();
+	}
+}
+
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
@@ -81,6 +93,8 @@ bool AForm::getSignedStatus() const { return is_signed; }
 
 int AForm::getReqSignGrade() const { return req_signing_grade; }
 
-int AForm::getReqExecGrade() const { return req_execution_grade; }
+int AForm::getReqExecGrade() const {
+	return req_execution_grade;
+}
 
 /* ************************************************************************** */

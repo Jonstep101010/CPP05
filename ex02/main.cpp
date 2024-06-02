@@ -1,24 +1,38 @@
-#include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include <iostream>
 
 int main() {
-	Bureaucrat MEP
-		= Bureaucrat("member of parliament", 3);
+	Bureaucrat president("Zaphod Beeblebrox", 1);
+	Bureaucrat lowly_scribe("Hannah Mckay", 150);
 
-	Bureaucrat president = Bureaucrat("president", GRADE_MAX);
+	ShrubberyCreationForm  bushes("frontyard");
+	PresidentialPardonForm whistleblower("Julien Assange");
+	RobotomyRequestForm    frankenstein("C-3PO");
 
-	AForm executive_order = AForm("executive order 139D", /* minimum signing level */1, 1);
+	try {
+		lowly_scribe.signForm(bushes);
+		lowly_scribe.signForm(whistleblower);
+		lowly_scribe.signForm(frankenstein);
 
-	// should fail (3 > 1)
-	MEP.signForm(executive_order);
+		president.signForm(bushes);
+		president.signForm(bushes);
+		president.signForm(whistleblower);
+		president.signForm(frankenstein);
 
-	// should succeed (1 <= 1)
-	std::cout << "- - - - - - - -\nBefore signing request:\n" << executive_order << "- - - - - - - -\n";
-	president.signForm(executive_order);
-	std::cout << "- - - - - - - -\nAfter signing request:\n" << executive_order  << "- - - - - - - -\n";
+		president.executeForm(bushes);
+		president.executeForm(whistleblower);
+		president.executeForm(frankenstein);
 
-	// instantiating a Aform requiring invalid grades should throw an exception
-	AForm Aform = AForm("simple", /* minimum signing level */0, 151);
+		lowly_scribe.executeForm(bushes);
+		lowly_scribe.executeForm(whistleblower);
+		lowly_scribe.executeForm(frankenstein);
 
-}
+	} catch (std::exception& e) {
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
+	return 0;
+};

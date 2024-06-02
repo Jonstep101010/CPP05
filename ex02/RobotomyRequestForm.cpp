@@ -7,6 +7,10 @@
 RobotomyRequestForm::RobotomyRequestForm() {}
 
 RobotomyRequestForm::RobotomyRequestForm(
+	std::string const& target)
+	: AForm("RobotomyRequestForm", 72, 45), target(target) {}
+
+RobotomyRequestForm::RobotomyRequestForm(
 	const RobotomyRequestForm& src) {
 	(void)src;
 }
@@ -31,15 +35,23 @@ RobotomyRequestForm::operator=(RobotomyRequestForm const& rhs) {
 	return *this;
 }
 
-// std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
+
+void RobotomyRequestForm::execute_action() const {
+	const bool robotomy_success
+		= /* @follow-up randomize 50% */ true;
+
+	std::cout << "iirrrrrierrrrirerrreirerrirerrirerrirerirerire"
+				 "rirerrierrierirrerrerirrrrrrrrrrrrrrr\n";
+	if (robotomy_success) {
+		std::cout << target
+				  << " has been robotomized successfully!\n";
+	} else {
+		std::cout << target << "'s robotomy has failed!\n";
+	}
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

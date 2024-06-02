@@ -4,7 +4,9 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-PresidentialPardonForm::PresidentialPardonForm() {}
+PresidentialPardonForm::PresidentialPardonForm(
+	std::string const& target)
+	: AForm("PresidentialPardonForm", 25, 5), target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(
 	const PresidentialPardonForm& src) {
@@ -31,15 +33,14 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(
 	return *this;
 }
 
-// std::ostream& operator<<(std::ostream&                 o,
-// 						 PresidentialPardonForm const& i) {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
+
+void PresidentialPardonForm::execute_action() const {
+	std::cout << target
+			  << " has been pardoned by Zaphod Beeblebrox\n";
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
