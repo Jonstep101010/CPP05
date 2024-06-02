@@ -1,4 +1,5 @@
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -40,8 +41,8 @@ RobotomyRequestForm::operator=(RobotomyRequestForm const& rhs) {
 */
 
 void RobotomyRequestForm::execute_action() const {
-	const bool robotomy_success
-		= /* @follow-up randomize 50% */ true;
+	srand(time(NULL)); // seed random number generator
+	const bool robotomy_success = rand() % 2 == 0;
 
 	std::cout << "iirrrrrierrrrirerrreirerrirerrirerrirerirerire"
 				 "rirerrierrierirrerrerirrrrrrrrrrrrrrr\n";
