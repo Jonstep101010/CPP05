@@ -39,11 +39,26 @@ int main() {
 		Intern someRandomIntern;
 		Form*  rrf;
 		try {
-			rrf = someRandomIntern.makeForm(
-				"robotomy request two", "Bender");
-			Bureaucrat bendersignexec("Fry", GRADE_MIN + 10);
+			rrf = someRandomIntern.makeForm("robotomy request",
+											"Bender");
+			Bureaucrat bendersignexec("Fry", 1);
 			bendersignexec.signForm(*rrf);
 			bendersignexec.executeForm(*rrf);
+			delete rrf;
+		} catch (std::exception& e) {
+			std::cerr << "Exception: " << e.what() << std::endl;
+		}
+	}
+	{
+		Intern someRandomIntern;
+		Form*  rrf;
+		try {
+			rrf = someRandomIntern.makeForm("other form",
+											"Bender");
+			Bureaucrat bendersignexec("Fry", 1);
+			bendersignexec.signForm(*rrf);
+			bendersignexec.executeForm(*rrf);
+			delete rrf;
 		} catch (std::exception& e) {
 			std::cerr << "Exception: " << e.what() << std::endl;
 		}
