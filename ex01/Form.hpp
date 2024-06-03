@@ -9,6 +9,7 @@ class Form {
 
 public:
 	Form();
+	Form(std::string const& name, int req_signing_grade);
 	Form(std::string const&, int, int);
 	Form(Form const& src);
 	~Form();
@@ -38,10 +39,10 @@ public:
 	};
 
 private:
-	const std::string name;
-	bool              is_signed;
-	const int         req_signing_grade;
-	const int         req_execution_grade;
+	const std::string _name;
+	bool              _is_signed;
+	const int         _req_signing_grade;
+	const int         _req_execution_grade;
 };
 
 std::ostream& operator<<(std::ostream& o, Form const& i);

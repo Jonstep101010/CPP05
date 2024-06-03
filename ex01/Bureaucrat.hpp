@@ -44,8 +44,8 @@ public:
 	void signForm(Form& form_to_sign);
 
 private:
-	const std::string name;
-	int               grade;
+	const std::string _name;
+	int               _grade;
 };
 
 std::ostream& operator<<(std::ostream& o, Bureaucrat const& rhs);

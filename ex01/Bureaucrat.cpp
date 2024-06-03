@@ -7,7 +7,7 @@
 */
 
 Bureaucrat::Bureaucrat()
-	: name("default"), grade(GRADE_MIN) {
+	: _name("default"), _grade(GRADE_MIN) {
 	std::cout << "created new default bureaucrat\n";
 }
 
@@ -22,19 +22,19 @@ static int _validate_grade(int grade) {
 }
 
 Bureaucrat::Bureaucrat(int grade)
-	: name("default"), grade(_validate_grade(grade)) {
+	: _name("default"), _grade(_validate_grade(grade)) {
 	std::cout << "created new bureaucrat with grade " << grade
 			  << "\n";
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade)
-	: name(name), grade(_validate_grade(grade)) {
+	: _name(name), _grade(_validate_grade(grade)) {
 	std::cout << "created new bureaucrat with name '" << name
 			  << "' of grade " << grade << "\n";
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& src)
-	: name(src.getName()), grade(src.getGrade()) {}
+	: _name(src.getName()), _grade(src.getGrade()) {}
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -48,7 +48,7 @@ Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const& rhs) {
 	if (this != &rhs) {
-		this->grade = rhs.getGrade();
+		this->_grade = rhs.getGrade();
 	}
 	return *this;
 }
@@ -59,7 +59,7 @@ Bureaucrat& Bureaucrat::operator++() {
 	if (new_grade < GRADE_MAX) {
 		throw Bureaucrat::GradeTooHighException();
 	}
-	this->grade = new_grade;
+	this->_grade = new_grade;
 	return *this;
 }
 
@@ -69,7 +69,7 @@ Bureaucrat& Bureaucrat::operator--() {
 	if (new_grade > GRADE_MIN) {
 		throw Bureaucrat::GradeTooLowException();
 	}
-	this->grade = new_grade;
+	this->_grade = new_grade;
 	return *this;
 }
 
@@ -91,14 +91,14 @@ void Bureaucrat::decrementGrade() { Bureaucrat::operator--(); }
 #define RED(string) "\033[31m\033[1m" << string << "\033[0m"
 #define GREEN(string) "\033[32m" << string << "\033[0m"
 
-void Bureaucrat::signForm(Form& signrequest) {
+void Bureaucrat::signForm(Form& form_to_sign) {
 	try {
-		signrequest.Form::beSigned(*this);
+		form_to_sign.Form::beSigned(*this);
 		std::cout << this->getName() << GREEN(" signed ")
-				  << signrequest.getName() << "\n";
+				  << form_to_sign.getName() << "\n";
 	} catch (Form::GradeTooLowException& e) {
 		std::cout << this->getName() << RED(" couldn't sign ")
-				  << signrequest.getName() << " because "
+				  << form_to_sign.getName() << " because "
 				  << e.what() << ".\n";
 	};
 }
@@ -107,10 +107,10 @@ void Bureaucrat::signForm(Form& signrequest) {
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-int Bureaucrat::getGrade() const { return this->grade; }
+int Bureaucrat::getGrade() const { return this->_grade; }
 
 const std::string& Bureaucrat::getName() const {
-	return this->name;
+	return this->_name;
 }
 
 /* ************************************************************************** */
