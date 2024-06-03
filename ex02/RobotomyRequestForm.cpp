@@ -1,17 +1,19 @@
 #include "RobotomyRequestForm.hpp"
 #include <cstdlib>
+#include <iostream>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
 RobotomyRequestForm::RobotomyRequestForm()
-	: AForm("RobotomyRequestForm", 72, 45)
+	: AForm("RobotomyRequestForm", RRF_SIGN, RRF_EXEC)
 	, target("default_target") {}
 
 RobotomyRequestForm::RobotomyRequestForm(
 	std::string const& target)
-	: AForm("RobotomyRequestForm", 72, 45), target(target) {}
+	: AForm("RobotomyRequestForm", RRF_SIGN, RRF_EXEC)
+	, target(target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(
 	const RobotomyRequestForm& src)
@@ -29,11 +31,8 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 
 RobotomyRequestForm&
 RobotomyRequestForm::operator=(RobotomyRequestForm const& rhs) {
-	//if ( this != &rhs )
-	//{
-	//this->_value = rhs.getValue();
-	//}
-	(void)rhs;
+	if (this != &rhs) {
+	}
 	return *this;
 }
 

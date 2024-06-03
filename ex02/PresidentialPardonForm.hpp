@@ -1,8 +1,10 @@
 #pragma once
 
 #include "AForm.hpp"
-#include <iostream>
 #include <string>
+
+#define PPF_SIGN 25
+#define PPF_EXEC 5
 
 class AForm;
 

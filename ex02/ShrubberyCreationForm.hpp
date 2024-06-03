@@ -1,9 +1,11 @@
 #pragma once
 
-#include <iostream>
+#include "AForm.hpp"
 #include <string>
 
-#include "AForm.hpp"
+#define SCF_SIGN 145
+#define SCF_EXEC 137
+
 
 class AForm;
 

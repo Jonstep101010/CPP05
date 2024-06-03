@@ -16,10 +16,12 @@ AForm::AForm(std::string const& name, int req_signing_grade,
 	, is_signed(false)
 	, req_signing_grade(req_signing_grade)
 	, req_execution_grade(req_exec_grade) {
-	if (req_signing_grade > 150 || req_exec_grade > 150) {
+	if (req_signing_grade > GRADE_MIN
+		|| req_exec_grade > GRADE_MIN) {
 		throw AForm::GradeTooLowException();
 	}
-	if (req_signing_grade < 1 || req_exec_grade < 1) {
+	if (req_signing_grade < GRADE_MAX
+		|| req_exec_grade < GRADE_MAX) {
 		throw AForm::GradeTooHighException();
 	}
 }
@@ -42,7 +44,6 @@ AForm::~AForm() {}
 
 AForm& AForm::operator=(AForm const& rhs) {
 	if (this != &rhs) {
-		// @follow-up is this correct?
 		this->is_signed = rhs.getSignedStatus();
 	}
 	return *this;
@@ -62,7 +63,6 @@ std::ostream& operator<<(std::ostream& o, AForm const& i) {
 */
 
 void AForm::beSigned(Bureaucrat& signee) {
-	(void)signee;
 	// lower number means higher grade
 	if (signee.getGrade() <= this->getReqSignGrade()) {
 		this->is_signed = true;

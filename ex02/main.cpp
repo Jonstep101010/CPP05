@@ -6,8 +6,8 @@
 #include <iostream>
 
 int main() {
-	Bureaucrat president("Zaphod Beeblebrox", 1);
-	Bureaucrat lowly_scribe("Hannah Mckay", 150);
+	Bureaucrat president("Zaphod Beeblebrox", GRADE_MAX);
+	Bureaucrat lowly_scribe("Hannah Mckay", GRADE_MIN);
 
 	ShrubberyCreationForm  bushes("frontyard");
 	PresidentialPardonForm whistleblower("Julien Assange");

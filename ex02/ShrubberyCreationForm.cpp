@@ -1,17 +1,19 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
+#include <iostream>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-	: AForm("ShrubberyCreationForm", 145, 137)
+	: AForm("ShrubberyCreationForm", SCF_SIGN, SCF_EXEC)
 	, target("default_target") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(
 	std::string const& target)
-	: AForm("ShrubberyCreationForm", 145, 137), target(target) {}
+	: AForm("ShrubberyCreationForm", SCF_SIGN, SCF_EXEC)
+	, target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(
 	const ShrubberyCreationForm& src)
@@ -29,11 +31,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(
 	ShrubberyCreationForm const& rhs) {
-	//if ( this != &rhs )
-	//{
-	//this->_value = rhs.getValue();
-	//}
-	(void)rhs;
+	if (this != &rhs) {
+	}
 	return *this;
 }
 

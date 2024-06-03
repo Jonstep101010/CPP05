@@ -1,8 +1,10 @@
 #pragma once
 
 #include "AForm.hpp"
-#include <iostream>
 #include <string>
+
+#define RRF_SIGN 72
+#define RRF_EXEC 45
 
 class AForm;
 

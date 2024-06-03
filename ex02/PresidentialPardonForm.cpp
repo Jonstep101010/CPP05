@@ -1,16 +1,18 @@
 #include "PresidentialPardonForm.hpp"
+#include <iostream>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
 PresidentialPardonForm::PresidentialPardonForm()
-	: AForm("PresidentialPardonForm", 25, 5)
+	: AForm("PresidentialPardonForm", PPF_SIGN, PPF_EXEC)
 	, target("default_target") {}
 
 PresidentialPardonForm::PresidentialPardonForm(
 	std::string const& target)
-	: AForm("PresidentialPardonForm", 25, 5), target(target) {}
+	: AForm("PresidentialPardonForm", PPF_SIGN, PPF_EXEC)
+	, target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(
 	const PresidentialPardonForm& src)
@@ -28,11 +30,8 @@ PresidentialPardonForm::~PresidentialPardonForm() {}
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(
 	PresidentialPardonForm const& rhs) {
-	//if ( this != &rhs )
-	//{
-	//this->_value = rhs.getValue();
-	//}
-	(void)rhs;
+	if (this != &rhs) {
+	}
 	return *this;
 }
 
