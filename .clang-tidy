@@ -1,7 +1,7 @@
 ---
 ExtraArgs:
   - -std=c++98
-Checks:          '*-,clang-diagnostic-*,clang-analyzer-*,cppcoreguidelines-*,-modernize-*,readability-*'
+Checks:          '*-,clang-diagnostic-*,clang-analyzer-*,cppcoreguidelines-*,-cppcoreguidelines-avoid-const-or-ref-data-members,-modernize-*,readability-*,-readability-identifier-length'
 WarningsAsErrors: true
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
