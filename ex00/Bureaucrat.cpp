@@ -6,12 +6,12 @@
 */
 
 Bureaucrat::Bureaucrat()
-	: name("default"), grade(GRADE_MIN) {
+	: _name("default"), _grade(GRADE_MIN) {
 	std::cout << "created new default bureaucrat\n";
 }
 
 Bureaucrat::Bureaucrat(int grade)
-	: name("default"), grade(grade) {
+	: _name("default"), _grade(grade) {
 	if (grade < GRADE_MAX) {
 		throw Bureaucrat::GradeTooHigh();
 	}
@@ -23,7 +23,7 @@ Bureaucrat::Bureaucrat(int grade)
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade)
-	: name(name), grade(grade) {
+	: _name(name), _grade(grade) {
 	if (grade < GRADE_MAX) {
 		throw Bureaucrat::GradeTooHigh();
 	}
@@ -35,7 +35,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& src)
-	: name(src.getName()), grade(src.getGrade()) {}
+	: _name(src.getName()), _grade(src.getGrade()) {}
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -49,7 +49,7 @@ Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const& rhs) {
 	if (this != &rhs) {
-		this->grade = rhs.getGrade();
+		this->_grade = rhs.getGrade();
 	}
 	return *this;
 }
@@ -60,7 +60,7 @@ Bureaucrat& Bureaucrat::operator++() {
 	if (new_grade < GRADE_MAX) {
 		throw Bureaucrat::GradeTooHigh();
 	}
-	this->grade = new_grade;
+	this->_grade = new_grade;
 	return *this;
 }
 
@@ -70,7 +70,7 @@ Bureaucrat& Bureaucrat::operator--() {
 	if (new_grade > GRADE_MIN) {
 		throw Bureaucrat::GradeTooLow();
 	}
-	this->grade = new_grade;
+	this->_grade = new_grade;
 	return *this;
 }
 
@@ -79,14 +79,6 @@ std::ostream& operator<<(std::ostream&     o,
 	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade()
 	  << ".\n";
 	return o;
-}
-
-const char* Bureaucrat::GradeTooLow::what() const throw() {
-	return "grade is too low\n";
-}
-
-const char* Bureaucrat::GradeTooHigh::what() const throw() {
-	return "grade is too high\n";
 }
 
 /*
@@ -101,10 +93,10 @@ void Bureaucrat::decrementGrade() { Bureaucrat::operator--(); }
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-int Bureaucrat::getGrade() const { return this->grade; }
+int Bureaucrat::getGrade() const { return this->_grade; }
 
 const std::string& Bureaucrat::getName() const {
-	return this->name;
+	return this->_name;
 }
 
 /* ************************************************************************** */
