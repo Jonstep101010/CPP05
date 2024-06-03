@@ -7,16 +7,16 @@
 
 PresidentialPardonForm::PresidentialPardonForm()
 	: AForm("PresidentialPardonForm", PPF_SIGN, PPF_EXEC)
-	, target("default_target") {}
+	, _target("default_target") {}
 
 PresidentialPardonForm::PresidentialPardonForm(
 	std::string const& target)
 	: AForm("PresidentialPardonForm", PPF_SIGN, PPF_EXEC)
-	, target(target) {}
+	, _target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(
 	const PresidentialPardonForm& src)
-	: AForm(src), target(src.target) {}
+	: AForm(src), _target(src._target) {}
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -40,7 +40,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(
 */
 
 void PresidentialPardonForm::execute_action() const {
-	std::cout << target
+	std::cout << _target
 			  << " has been pardoned by Zaphod Beeblebrox\n";
 }
 

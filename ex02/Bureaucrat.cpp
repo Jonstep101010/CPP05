@@ -91,19 +91,19 @@ void Bureaucrat::decrementGrade() { Bureaucrat::operator--(); }
 #define RED(string) "\033[31m\033[1m" << string << "\033[0m"
 #define GREEN(string) "\033[32m" << string << "\033[0m"
 
-void Bureaucrat::signForm(AForm& signrequest) {
+void Bureaucrat::signForm(AForm& form_to_sign) {
 	try {
-		signrequest.AForm::beSigned(*this);
+		form_to_sign.AForm::beSigned(*this);
 		std::cout << this->getName() << GREEN(" signed ")
-				  << signrequest.getName() << "\n";
+				  << form_to_sign.getName() << "\n";
 	} catch (AForm::GradeTooLowException& e) {
 		std::cout << this->getName() << RED(" couldn't sign ")
-				  << signrequest.getName() << " because "
+				  << form_to_sign.getName() << " because "
 				  << e.what() << ".\n";
 	};
 }
 
-void Bureaucrat::executeForm(AForm const& form) {
+void Bureaucrat::executeForm(AForm const& form) const {
 	try {
 		form.execute(*this);
 		std::cout << this->getName() << " executed "

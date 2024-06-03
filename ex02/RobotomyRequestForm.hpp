@@ -20,6 +20,6 @@ public:
 	operator=(RobotomyRequestForm const& rhs);
 
 private:
-	const std::string target;
+	const std::string _target;
 	void              execute_action() const;
 };

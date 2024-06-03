@@ -8,16 +8,16 @@
 
 RobotomyRequestForm::RobotomyRequestForm()
 	: AForm("RobotomyRequestForm", RRF_SIGN, RRF_EXEC)
-	, target("default_target") {}
+	, _target("default_target") {}
 
 RobotomyRequestForm::RobotomyRequestForm(
 	std::string const& target)
 	: AForm("RobotomyRequestForm", RRF_SIGN, RRF_EXEC)
-	, target(target) {}
+	, _target(target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(
 	const RobotomyRequestForm& src)
-	: AForm(src), target(src.target) {}
+	: AForm(src), _target(src._target) {}
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -47,10 +47,10 @@ void RobotomyRequestForm::execute_action() const {
 	std::cout << "iirrrrrierrrrirerrreirerrirerrirerrirerirerire"
 				 "rirerrierrierirrerrerirrrrrrrrrrrrrrr\n";
 	if (robotomy_success) {
-		std::cout << target
+		std::cout << _target
 				  << " has been robotomized successfully!\n";
 	} else {
-		std::cout << target << "'s robotomy has failed!\n";
+		std::cout << _target << "'s robotomy has failed!\n";
 	}
 }
 

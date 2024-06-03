@@ -47,10 +47,10 @@ public:
 
 private:
 	virtual void      execute_action() const = 0;
-	const std::string name;
-	bool              is_signed;
-	const int         req_signing_grade;
-	const int         req_execution_grade;
+	const std::string _name;
+	bool              _is_signed;
+	const int         _req_signing_grade;
+	const int         _req_execution_grade;
 };
 
 std::ostream& operator<<(std::ostream& o, AForm const& i);

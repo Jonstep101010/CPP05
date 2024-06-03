@@ -8,16 +8,16 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm()
 	: AForm("ShrubberyCreationForm", SCF_SIGN, SCF_EXEC)
-	, target("default_target") {}
+	, _target("default_target") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(
 	std::string const& target)
 	: AForm("ShrubberyCreationForm", SCF_SIGN, SCF_EXEC)
-	, target(target) {}
+	, _target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(
 	const ShrubberyCreationForm& src)
-	: AForm(src), target(src.target) {}
+	: AForm(src), _target(src._target) {}
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -41,7 +41,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(
 */
 
 void ShrubberyCreationForm::execute_action() const {
-	std::ofstream file((target + "_shrubbery").c_str(),
+	std::ofstream file((_target + "_shrubbery").c_str(),
 					   std::ios::trunc | std::ios::out);
 
 	if (file.is_open()) {
