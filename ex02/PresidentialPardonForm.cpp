@@ -4,14 +4,17 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
+PresidentialPardonForm::PresidentialPardonForm()
+	: AForm("PresidentialPardonForm", 25, 5)
+	, target("default_target") {}
+
 PresidentialPardonForm::PresidentialPardonForm(
 	std::string const& target)
 	: AForm("PresidentialPardonForm", 25, 5), target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(
-	const PresidentialPardonForm& src) {
-	(void)src;
-}
+	const PresidentialPardonForm& src)
+	: AForm(src), target(src.target) {}
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------

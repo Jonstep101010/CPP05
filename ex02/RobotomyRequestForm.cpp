@@ -5,16 +5,17 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-RobotomyRequestForm::RobotomyRequestForm() {}
+RobotomyRequestForm::RobotomyRequestForm()
+	: AForm("RobotomyRequestForm", 72, 45)
+	, target("default_target") {}
 
 RobotomyRequestForm::RobotomyRequestForm(
 	std::string const& target)
 	: AForm("RobotomyRequestForm", 72, 45), target(target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(
-	const RobotomyRequestForm& src) {
-	(void)src;
-}
+	const RobotomyRequestForm& src)
+	: AForm(src), target(src.target) {}
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
